@@ -2,15 +2,16 @@ package com.Jeans;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Jeans {
-    private final Collection <JeansParts> parts;
+    private final Collection<JeansParts> parts;
     private final String name;
     private double width;
     private double length;
     private final JeansType type;
 
-    public Jeans(Collection<JeansParts> parts, String name, double width, double length, JeansType type) {
+    public Jeans(Collection<JeansParts> parts, String name, double width, double length, JeansType type) throws JeansException {
         this.parts = parts;
         this.name = name;
         this.width = width;
@@ -47,9 +48,25 @@ public class Jeans {
         return this;
     }
 
-    //while замість for
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Jeans jeans = (Jeans) obj;
+        return width == jeans.width &&
+                length == jeans.length &&
+                type == jeans.type &&
+                Objects.equals(parts, jeans.parts) &&
+                Objects.equals(name, jeans.name);
+    }
+
     public void print() {
-        for(Iterator<JeansParts> iterator = parts.iterator(); iterator.hasNext(); ){
+        Iterator<JeansParts> iterator = parts.iterator();
+        while (iterator.hasNext()) {
             JeansParts part = iterator.next();
             part.print();
         }
