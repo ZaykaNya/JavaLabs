@@ -60,7 +60,6 @@ public class Jeans {
         return width == jeans.width &&
                 length == jeans.length &&
                 type == jeans.type &&
-                Objects.equals(parts, jeans.parts) &&
                 Objects.equals(name, jeans.name);
     }
 
