@@ -12,11 +12,15 @@ public class Jeans {
     private final JeansType type;
 
     public Jeans(Collection<JeansParts> parts, String name, double width, double length, JeansType type) throws JeansException {
+        if(name.equals("")) {
+            throw new JeansException();
+        }
         this.parts = parts;
         this.name = name;
         this.width = width;
         this.length = length;
         this.type = type;
+
     }
 
     public String getName() {

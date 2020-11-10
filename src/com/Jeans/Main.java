@@ -9,9 +9,6 @@ public class Main {
         JeansType types = JeansType.straight;
         types.showJeansTypes();
 
-
-
-
         try {
             Jeans myJeans = new Jeans(new ArrayList<>(), "Collins", 30, 32, JeansType.skinny);
             Jeans myJeans2 = new Jeans(new ArrayList<>(), "Name", 28, 30, JeansType.flare);
