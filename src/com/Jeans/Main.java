@@ -1,6 +1,10 @@
 package com.Jeans;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.OptionalInt;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -14,37 +18,76 @@ public class Main {
             Jeans myJeans2 = new Jeans(new ArrayList<>(), "Name", 28, 30, JeansType.flare);
 
             myJeans.addPart(new BackPocket("Denim", 0.5, "blue",
-                    new Button("steel", 0.02, "black", "Pocket Button")))
-                    .addPart(new BottomHem("Denim", 0.1, "blue"))
-                    .addPart(new Button("steel", 0.05, "black", "Common Button"))
-                    .addPart(new FrontPocket("Denim", 0.3, "blue"))
-                    .addPart(new InsidePart("Cotton", 5, "black"))
+                    new Button("steel", 0.02, "black", "Pocket Button", 150), 150))
+                    .addPart(new BottomHem("Denim", 0.1, "blue", 150))
+                    .addPart(new Button("steel", 0.05, "black", "Common Button", 250))
+                    .addPart(new FrontPocket("Denim", 0.3, "blue", 150))
+                    .addPart(new InsidePart("Cotton", 5, "black", 150))
                     .addPart(new OutsidePart("Denim", 5, "blue",
-                            new OutsidePart.Pattern("Round", "Medium", "white")))
-                    .addPart(new Zipper("Steel", 0.1, "black", 0.15));
+                            new OutsidePart.Pattern("Round", "Medium", "white"), 150))
+                    .addPart(new Zipper("steel", 0.1, "black", 0.15, 150));
 
             printJeans(myJeans);
 
             myJeans2.addPart(new BackPocket("Denim", 0.6, "blue",
-                    new Button("steel", 0.02, "black", "Pocket Button")))
-                    .addPart(new BottomHem("Denim", 0.1, "blue"))
-                    .addPart(new Button("steel", 0.04, "black", "Common Button"))
-                    .addPart(new FrontPocket("Denim", 0.2, "blue"))
-                    .addPart(new InsidePart("Cotton", 6, "black"))
+                    new Button("steel", 0.02, "black", "Pocket Button", 200), 200))
+                    .addPart(new BottomHem("Denim", 0.1, "blue", 200))
+                    .addPart(new Button("steel", 0.04, "black", "Common Button", 200))
+                    .addPart(new FrontPocket("Denim", 0.2, "blue", 200))
+                    .addPart(new InsidePart("Cotton", 6, "black", 200))
                     .addPart(new OutsidePart("Denim", 6, "blue",
-                            new OutsidePart.Pattern("Round", "Medium", "white")))
-                    .addPart(new Zipper("Steel", 0.1, "black", 0.2));
+                            new OutsidePart.Pattern("Round", "Medium", "white"), 200))
+                    .addPart(new Zipper("steel", 0.1, "black", 0.2, 200));
 
             System.out.println(myJeans.equals(myJeans2));
             System.out.println();
+
+
+            int price = myJeans.getParts().stream().filter(part -> part.getMaterial() == "steel")
+                    .mapToInt(part -> part.getPrice()).reduce(0, (left, right) -> left + right);
+
+            System.out.println("Price: " + price);
+
+
+            OptionalInt maxPrice = myJeans.getParts().stream().mapToInt(part -> {
+                if(part.getMaterial().equals("steel")) {
+                    return part.getPrice();
+                }
+                return 0;
+            }).max();
+
+            System.out.println("Max Price: " + maxPrice.getAsInt());
+
+
+            int averagePrice = myJeans.getParts().stream().filter(part -> part.getMaterial() == "steel")
+                    .mapToInt(part -> part.getPrice()).reduce(0, (left, right) -> left + right)
+                    / myJeans.getParts().stream().filter(part -> part.getMaterial() == "steel").toArray().length;
+
+            System.out.println("Average Price: " + averagePrice);
+
+
+            ArrayList<String> suitableArray = new ArrayList<>();
+            ArrayList<String> unsuitableArray = new ArrayList<>();
+            myJeans.getParts().stream().filter(part -> {
+                if(!part.getMaterial().equals("steel")) {
+                    unsuitableArray.add(part.getColor());
+                }
+                return true;
+            }).filter(part -> part.getMaterial() == "steel").forEach(part -> suitableArray.add(part.getColor()));
+
+            System.out.println(suitableArray);
+            System.out.println(unsuitableArray);
+
+
 
         } catch (JeansException e) {
             System.err.println(e.getMessage());
         }
 
 
-        Button button = new Button("steel", 0.04, "black", "Common Button");
-        Button button2 = new Button("plastic", 0.05, "grey", "Common Button");
+
+        Button button = new Button("steel", 0.04, "black", "Common Button", 200);
+        Button button2 = new Button("plastic", 0.05, "grey", "Common Button", 200);
 
         System.out.println(button.equals(button2));
         System.out.println();
