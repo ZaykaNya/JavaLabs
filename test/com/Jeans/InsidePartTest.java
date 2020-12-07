@@ -8,7 +8,7 @@ public class InsidePartTest {
     @Test
     public void checkInsidePartConstructor() {
 
-        InsidePart insidePart = new InsidePart("Cotton", 5, "black");
+        InsidePart insidePart = new InsidePart("Cotton", 5, "black", 200);
 
         Assertions.assertEquals("Cotton", insidePart.getMaterial());
         Assertions.assertEquals(5, insidePart.getMaterialSize());

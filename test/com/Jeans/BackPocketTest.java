@@ -10,7 +10,7 @@ public class BackPocketTest {
     public void checkBackPocketConstructor() {
 
         BackPocket backPocket = new BackPocket("Denim", 0.5, "blue",
-                new Button("steel", 0.02, "black", "Pocket Button"));
+                new Button("steel", 0.02, "black", "Pocket Button", 200), 200);
 
         Assertions.assertEquals("Denim", backPocket.getMaterial());
         Assertions.assertEquals(0.5, backPocket.getMaterialSize());
@@ -28,7 +28,7 @@ public class BackPocketTest {
         Button button = Mockito.mock(Button.class);
         button.setButtonType("Pocket Button");
         Mockito.when(button.getButtonType()).thenReturn(str);
-        BackPocket backPocket = new BackPocket("Denim", 0.5, "blue", button);
+        BackPocket backPocket = new BackPocket("Denim", 0.5, "blue", button, 200);
         Assertions.assertEquals(backPocket.getBackPocketButton().getButtonType(), str);
         Mockito.verify(button).getButtonType();
     }

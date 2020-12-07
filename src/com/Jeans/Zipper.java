@@ -3,8 +3,8 @@ package com.Jeans;
 public class Zipper extends JeansParts {
     private double zipperLength;
 
-    public Zipper(String material, double materialSize, String color, double zipperLength) {
-        super(material, materialSize, color);
+    public Zipper(String material, double materialSize, String color, double zipperLength, int price) {
+        super(material, materialSize, color, price);
         this.zipperLength = zipperLength;
     }
 

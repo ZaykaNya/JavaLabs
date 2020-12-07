@@ -9,7 +9,7 @@ public class OutsidePartTest {
     public void checkOutsidePartConstructor() {
 
         OutsidePart outsidePart = new OutsidePart("Denim", 5, "blue",
-                new OutsidePart.Pattern("Round", "Medium", "white"));
+                new OutsidePart.Pattern("Round", "Medium", "white"), 200);
 
         Assertions.assertEquals("Denim", outsidePart.getMaterial());
         Assertions.assertEquals(5, outsidePart.getMaterialSize());

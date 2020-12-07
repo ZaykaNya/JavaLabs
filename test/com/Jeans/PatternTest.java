@@ -11,7 +11,7 @@ public class PatternTest {
         OutsidePart.Pattern pattern = Mockito.mock(OutsidePart.Pattern.class);
         pattern.setPattern("Round");
         Mockito.when(pattern.getPattern()).thenReturn(str);
-        OutsidePart outsidePart = new OutsidePart("Denim", 5, "blue", pattern);
+        OutsidePart outsidePart = new OutsidePart("Denim", 5, "blue", pattern, 200);
         Assertions.assertEquals(outsidePart.getPattern().getPattern(), str);
         Mockito.verify(pattern).getPattern();
     }

@@ -2,8 +2,8 @@ package com.Jeans;
 
 public class FrontPocket extends JeansParts {
 
-    public FrontPocket(String material, double materialSize, String color) {
-        super(material, materialSize, color);
+    public FrontPocket(String material, double materialSize, String color, int price) {
+        super(material, materialSize, color, price);
     }
 
     @Override

@@ -10,9 +10,10 @@ public class Jeans {
     private double width;
     private double length;
     private final JeansType type;
+    private int price;
 
     public Jeans(Collection<JeansParts> parts, String name, double width, double length, JeansType type) throws JeansException {
-        if(name.equals("")) {
+        if (name.equals("")) {
             throw new JeansException();
         }
         this.parts = parts;
@@ -21,6 +22,18 @@ public class Jeans {
         this.length = length;
         this.type = type;
 
+    }
+
+    public Collection<JeansParts> getParts() {
+        return parts;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getName() {
@@ -49,6 +62,7 @@ public class Jeans {
 
     public Jeans addPart(JeansParts part) {
         this.parts.add(part);
+        this.price += part.price;
         return this;
     }
 

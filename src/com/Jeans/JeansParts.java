@@ -4,11 +4,21 @@ public abstract class JeansParts implements JeansComponent {
     protected String material;
     protected double materialSize;
     protected String color;
+    protected int price;
 
-    public JeansParts(String material, double materialSize, String color) {
+    public JeansParts(String material, double materialSize, String color, int price) {
         this.material = material;
         this.materialSize = materialSize;
         this.color = color;
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getMaterial() {
@@ -35,5 +45,6 @@ public abstract class JeansParts implements JeansComponent {
         this.color = color;
     }
 
-    public void print(){}
+    public void print() {
+    }
 }

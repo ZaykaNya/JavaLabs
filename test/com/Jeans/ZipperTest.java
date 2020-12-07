@@ -8,7 +8,7 @@ public class ZipperTest {
     @Test
     public void checkZipperConstructor() {
 
-        Zipper zipper = new Zipper("Steel", 0.1, "black", 0.15);
+        Zipper zipper = new Zipper("Steel", 0.1, "black", 0.15, 200);
 
         Assertions.assertEquals("Steel", zipper.getMaterial());
         Assertions.assertEquals(0.1, zipper.getMaterialSize());

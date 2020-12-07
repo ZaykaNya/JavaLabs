@@ -8,7 +8,7 @@ public class ButtonTest {
     @Test
     public void checkButtonConstructor() {
 
-        Button button = new Button("steel", 0.04, "black", "Common Button");
+        Button button = new Button("steel", 0.04, "black", "Common Button", 200);
 
         Assertions.assertEquals(0.04, button.getMaterialSize());
         Assertions.assertEquals("Common Button", button.getButtonType());

@@ -3,8 +3,8 @@ package com.Jeans;
 public class Button extends JeansParts{
     private String buttonType;
 
-    public Button(String material, double materialSize, String color, String buttonType) {
-        super(material, materialSize, color);
+    public Button(String material, double materialSize, String color, String buttonType, int price) {
+        super(material, materialSize, color, price);
         this.buttonType = buttonType;
     }
 

@@ -8,7 +8,7 @@ public class BottomHemTest {
     @Test
     public void checkBottomHemConstructor() {
 
-        BottomHem bottomHem = new BottomHem("Denim", 0.1, "blue");
+        BottomHem bottomHem = new BottomHem("Denim", 0.1, "blue", 200);
 
         Assertions.assertEquals("Denim", bottomHem.getMaterial());
         Assertions.assertEquals(0.1, bottomHem.getMaterialSize());

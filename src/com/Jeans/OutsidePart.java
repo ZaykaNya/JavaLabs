@@ -3,8 +3,8 @@ package com.Jeans;
 public class OutsidePart extends JeansParts {
     private Pattern pattern;
 
-    public OutsidePart(String material, double materialSize, String color, Pattern pattern) {
-        super(material, materialSize, color);
+    public OutsidePart(String material, double materialSize, String color, Pattern pattern, int price) {
+        super(material, materialSize, color, price);
         this.pattern = pattern;
     }
 

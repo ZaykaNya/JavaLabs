@@ -2,8 +2,8 @@ package com.Jeans;
 
 public class BottomHem extends JeansParts{
 
-    public BottomHem(String material, double materialSize, String color) {
-        super(material, materialSize, color);
+    public BottomHem(String material, double materialSize, String color, int price) {
+        super(material, materialSize, color, price);
     }
 
     @Override

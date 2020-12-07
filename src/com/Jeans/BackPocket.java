@@ -3,8 +3,8 @@ package com.Jeans;
 public class BackPocket extends JeansParts{
     private Button backPocketButton;
 
-    public BackPocket(String material, double materialSize, String color, Button backPocketButton) {
-        super(material, materialSize, color);
+    public BackPocket(String material, double materialSize, String color, Button backPocketButton, int price) {
+        super(material, materialSize, color, price);
         this.backPocketButton = backPocketButton;
     }
 
