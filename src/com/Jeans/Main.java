@@ -1,10 +1,9 @@
 package com.Jeans;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.OptionalInt;
-import java.util.stream.Stream;
 
 public class Main {
 
@@ -43,14 +42,14 @@ public class Main {
             System.out.println();
 
 
-            int price = myJeans.getParts().stream().filter(part -> part.getMaterial() == "steel")
+            int price = myJeans.getParts().stream().filter(part -> part.getMaterial().equals("steel"))
                     .mapToInt(part -> part.getPrice()).reduce(0, (left, right) -> left + right);
 
             System.out.println("Price: " + price);
 
 
             OptionalInt maxPrice = myJeans.getParts().stream().mapToInt(part -> {
-                if(part.getMaterial().equals("steel")) {
+                if (part.getMaterial().equals("steel")) {
                     return part.getPrice();
                 }
                 return 0;
@@ -59,7 +58,7 @@ public class Main {
             System.out.println("Max Price: " + maxPrice.getAsInt());
 
 
-            int averagePrice = myJeans.getParts().stream().filter(part -> part.getMaterial() == "steel")
+            int averagePrice = myJeans.getParts().stream().filter(part -> part.getMaterial().equals("steel"))
                     .mapToInt(part -> part.getPrice()).reduce(0, (left, right) -> left + right)
                     / myJeans.getParts().stream().filter(part -> part.getMaterial() == "steel").toArray().length;
 
@@ -69,21 +68,30 @@ public class Main {
             ArrayList<String> suitableArray = new ArrayList<>();
             ArrayList<String> unsuitableArray = new ArrayList<>();
             myJeans.getParts().stream().filter(part -> {
-                if(!part.getMaterial().equals("steel")) {
+                if (!part.getMaterial().equals("steel")) {
                     unsuitableArray.add(part.getColor());
+                    return false;
                 }
                 return true;
-            }).filter(part -> part.getMaterial() == "steel").forEach(part -> suitableArray.add(part.getColor()));
+            }).forEach(part -> suitableArray.add(part.getColor()));
 
-            System.out.println(suitableArray);
-            System.out.println(unsuitableArray);
+            System.out.println("Suitable Array: " + suitableArray);
+            System.out.println("Unsuitable Array: " + unsuitableArray);
 
+
+            ArrayList<Jeans> jeansList = new ArrayList<>();
+            jeansList.add(myJeans);
+            jeansList.add(myJeans2);
+
+            int totalPrice = jeansList.stream().flatMap(jeans -> jeans.getParts().stream())
+                    .mapToInt(part -> part.getPrice()).reduce(0, Integer::sum);
+
+            System.out.println("Total price: " + totalPrice);
 
 
         } catch (JeansException e) {
             System.err.println(e.getMessage());
         }
-
 
 
         Button button = new Button("steel", 0.04, "black", "Common Button", 200);
