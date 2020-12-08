@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -65,18 +66,11 @@ public class Main {
             System.out.println("Average Price: " + averagePrice);
 
 
-            ArrayList<String> suitableArray = new ArrayList<>();
-            ArrayList<String> unsuitableArray = new ArrayList<>();
-            myJeans.getParts().stream().filter(part -> {
-                if (!part.getMaterial().equals("steel")) {
-                    unsuitableArray.add(part.getColor());
-                    return false;
-                }
-                return true;
-            }).forEach(part -> suitableArray.add(part.getColor()));
+            var arr = myJeans.getParts().
+                    stream().collect(Collectors.groupingBy(part -> part.getMaterial().equals("steel") ? "suitable" : "unsuitable"));
 
-            System.out.println("Suitable Array: " + suitableArray);
-            System.out.println("Unsuitable Array: " + unsuitableArray);
+            System.out.println("Suitable: " + arr.get("suitable"));
+            System.out.println("Unsuitable: " + arr.get("unsuitable"));
 
 
             ArrayList<Jeans> jeansList = new ArrayList<>();
@@ -87,6 +81,7 @@ public class Main {
                     .mapToInt(part -> part.getPrice()).reduce(0, Integer::sum);
 
             System.out.println("Total price: " + totalPrice);
+            System.out.println();
 
 
         } catch (JeansException e) {
@@ -99,6 +94,7 @@ public class Main {
 
         System.out.println(button.equals(button2));
         System.out.println();
+
 
         int number1 = 10;
         int number2 = 20;

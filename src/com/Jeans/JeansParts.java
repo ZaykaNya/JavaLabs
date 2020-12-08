@@ -45,6 +45,11 @@ public abstract class JeansParts implements JeansComponent {
         this.color = color;
     }
 
+    @Override
+    public String toString() {
+        return this.material;
+    }
+
     public void print() {
     }
 }
