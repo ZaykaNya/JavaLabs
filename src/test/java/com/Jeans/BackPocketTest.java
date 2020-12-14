@@ -1,5 +1,8 @@
 package com.Jeans;
 
+import com.Jeans.BackPocket;
+import com.Jeans.Button;
+import com.Jeans.Jeans;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -1,5 +1,8 @@
 package com.Jeans;
 
+import com.Jeans.Jeans;
+import com.Jeans.JeansException;
+import com.Jeans.JeansType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

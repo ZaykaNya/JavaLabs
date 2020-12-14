@@ -1,5 +1,7 @@
 package com.Jeans;
 
+import com.Jeans.InsidePart;
+import com.Jeans.Jeans;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
