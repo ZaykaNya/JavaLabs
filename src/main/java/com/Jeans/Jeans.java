@@ -1,5 +1,6 @@
 package com.Jeans;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
@@ -22,6 +23,15 @@ public class Jeans {
         this.length = length;
         this.type = type;
 
+    }
+
+    public Jeans(String name, Collection<JeansParts> parts) {
+        this.parts = parts;
+        this.name = name;
+        this.width = 100;
+        this.length = 100;
+        this.type = JeansType.skinny;
+        this.price = 100;
     }
 
     public Collection<JeansParts> getParts() {
