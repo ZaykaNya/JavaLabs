@@ -1,12 +1,10 @@
 package com.Jeans;
 
-import com.Jeans.Jeans;
-import com.Jeans.OutsidePart;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class PatternTest {
+public class PatternTestIT {
     @Test
     void testPattern() {
         String str = "Round";
