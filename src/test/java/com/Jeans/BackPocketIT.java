@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class BackPocketTestIT {
+public class BackPocketIT {
     @Test
     void testBackPocket() {
         String str = "Pocket Button";
