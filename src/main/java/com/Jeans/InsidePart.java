@@ -1,6 +1,10 @@
 package com.Jeans;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class InsidePart extends JeansParts{
+    private static final Logger logger = LogManager.getLogger(InsidePart.class.getName());
 
     public InsidePart(String material, double materialSize, String color, int price) {
         super(material, materialSize, color, price);
@@ -8,10 +12,9 @@ public class InsidePart extends JeansParts{
 
     @Override
     public void print() {
-        System.out.println("Inside part");
-        System.out.println("material: " + material);
-        System.out.println("material size: " + materialSize + "(m2)");
-        System.out.println("color: " + color);
-        System.out.println();
+        logger.info("Inside part");
+        logger.info("material: " + material);
+        logger.info("material size: " + materialSize + "(m2)");
+        logger.info("color: " + color);
     }
 }

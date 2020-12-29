@@ -1,17 +1,20 @@
 package com.Jeans;
 
-public class FrontPocket extends JeansParts {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class FrontPocket extends JeansParts {
+    private static final Logger logger = LogManager.getLogger(FrontPocket.class.getName());
+    
     public FrontPocket(String material, double materialSize, String color, int price) {
         super(material, materialSize, color, price);
     }
 
     @Override
     public void print() {
-        System.out.println("Front pocket");
-        System.out.println("material: " + material);
-        System.out.println("material size: " + materialSize + "(m2)");
-        System.out.println("color: " + color);
-        System.out.println();
+        logger.info("Front pocket");
+        logger.info("material: " + material);
+        logger.info("material size: " + materialSize + "(m2)");
+        logger.info("color: " + color);
     }
 }

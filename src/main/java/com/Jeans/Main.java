@@ -1,5 +1,8 @@
 package com.Jeans;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -7,6 +10,8 @@ import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class Main {
+
+    private static final Logger logger = LogManager.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
 
@@ -39,14 +44,13 @@ public class Main {
                             new OutsidePart.Pattern("Round", "Medium", "white"), 200))
                     .addPart(new Zipper("steel", 0.1, "black", 0.2, 200));
 
-            System.out.println(myJeans.equals(myJeans2));
-            System.out.println();
+            logger.info(myJeans.equals(myJeans2));
 
 
             int price = myJeans.getParts().stream().filter(part -> part.getMaterial().equals("steel"))
                     .mapToInt(part -> part.getPrice()).reduce(0, (left, right) -> left + right);
 
-            System.out.println("Price: " + price);
+            logger.info("Price: " + price);
 
 
             OptionalInt maxPrice = myJeans.getParts().stream().mapToInt(part -> {
@@ -56,21 +60,21 @@ public class Main {
                 return 0;
             }).max();
 
-            System.out.println("Max Price: " + maxPrice.getAsInt());
+            logger.info("Max Price: " + maxPrice.getAsInt());
 
 
             int averagePrice = myJeans.getParts().stream().filter(part -> part.getMaterial().equals("steel"))
                     .mapToInt(part -> part.getPrice()).reduce(0, (left, right) -> left + right)
                     / myJeans.getParts().stream().filter(part -> part.getMaterial() == "steel").toArray().length;
 
-            System.out.println("Average Price: " + averagePrice);
+            logger.info("Average Price: " + averagePrice);
 
 
             var arr = myJeans.getParts().
                     stream().collect(Collectors.groupingBy(part -> part.getMaterial().equals("steel") ? "suitable" : "unsuitable"));
 
-            System.out.println("Suitable: " + arr.get("suitable"));
-            System.out.println("Unsuitable: " + arr.get("unsuitable"));
+            logger.info("Suitable: " + arr.get("suitable"));
+            logger.info("Unsuitable: " + arr.get("unsuitable"));
 
 
             ArrayList<Jeans> jeansList = new ArrayList<>();
@@ -80,8 +84,7 @@ public class Main {
             int totalPrice = jeansList.stream().flatMap(jeans -> jeans.getParts().stream())
                     .mapToInt(part -> part.getPrice()).reduce(0, Integer::sum);
 
-            System.out.println("Total price: " + totalPrice);
-            System.out.println();
+            logger.info("Total price: " + totalPrice);
 
 
         } catch (JeansException e) {
@@ -92,20 +95,19 @@ public class Main {
         Button button = new Button("steel", 0.04, "black", "Common Button", 200);
         Button button2 = new Button("plastic", 0.05, "grey", "Common Button", 200);
 
-        System.out.println(button.equals(button2));
-        System.out.println();
+        logger.info(button.equals(button2));
 
 
         int number1 = 10;
         int number2 = 20;
         String word = "Hello number ";
         String result = word + number1 + number2;
-        System.out.println(result);
+        logger.info(result);
 
     }
 
     public static void printJeans(Jeans myJeans) {
-        System.out.println("Your jeans");
+        logger.info("Your jeans");
         String str = "Brand: ";
         StringBuffer strBuffer = new StringBuffer(str);
         strBuffer.append(myJeans.getName());
@@ -116,7 +118,7 @@ public class Main {
         strBuffer.append(" jeans type: ");
         strBuffer.append(myJeans.getType());
         strBuffer.append("\n");
-        System.out.println(strBuffer.toString());
+        logger.info(strBuffer.toString());
         myJeans.print();
     }
 }

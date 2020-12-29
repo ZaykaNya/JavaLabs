@@ -1,7 +1,11 @@
 package com.Jeans;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class OutsidePart extends JeansParts {
     private Pattern pattern;
+    private static final Logger logger = LogManager.getLogger(OutsidePart.class.getName());
 
     public OutsidePart(String material, double materialSize, String color, Pattern pattern, int price) {
         super(material, materialSize, color, price);
@@ -18,10 +22,10 @@ public class OutsidePart extends JeansParts {
 
     @Override
     public void print() {
-        System.out.println("Outside part");
-        System.out.println("material: " + material);
-        System.out.println("material size: " + materialSize + "(m2)");
-        System.out.println("color: " + color);
+        logger.info("Outside part");
+        logger.info("material: " + material);
+        logger.info("material size: " + materialSize + "(m2)");
+        logger.info("color: " + color);
         pattern.print();
     }
 
@@ -65,11 +69,10 @@ public class OutsidePart extends JeansParts {
         }
 
         public void print() {
-            System.out.println("Pattern");
-            System.out.println("pattern: " + pattern);
-            System.out.println("pattern size: " + patternSize);
-            System.out.println("pattern color: " + patternColor);
-            System.out.println();
+            logger.info("Pattern");
+            logger.info("pattern: " + pattern);
+            logger.info("pattern size: " + patternSize);
+            logger.info("pattern color: " + patternColor);
         }
     }
 }

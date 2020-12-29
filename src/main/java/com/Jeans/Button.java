@@ -1,6 +1,10 @@
 package com.Jeans;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Button extends JeansParts{
+    private static final Logger logger = LogManager.getLogger(Button.class.getName());
     private String buttonType;
 
     public Button(String material, double materialSize, String color, String buttonType, int price) {
@@ -18,11 +22,10 @@ public class Button extends JeansParts{
 
     @Override
     public void print() {
-        System.out.println("Button");
-        System.out.println("material: " + material);
-        System.out.println("material size: " + materialSize + "(m2)");
-        System.out.println("color: " + color);
-        System.out.println("button type: " + buttonType);
-        System.out.println();
+        logger.info("Button");
+        logger.info("material: " + material);
+        logger.info("material size: " + materialSize + "(m2)");
+        logger.info("color: " + color);
+        logger.info("button type: " + buttonType);
     }
 }

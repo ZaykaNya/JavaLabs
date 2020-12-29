@@ -1,17 +1,20 @@
 package com.Jeans;
 
-public class BottomHem extends JeansParts{
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class BottomHem extends JeansParts{
+    private static final Logger logger = LogManager.getLogger(BottomHem.class.getName());
+    
     public BottomHem(String material, double materialSize, String color, int price) {
         super(material, materialSize, color, price);
     }
 
     @Override
     public void print() {
-        System.out.println("Bottom hem");
-        System.out.println("material: " + material);
-        System.out.println("material size: " + materialSize + "(m2)");
-        System.out.println("color: " + color);
-        System.out.println();
+        logger.info("Bottom hem");
+        logger.info("material: " + material);
+        logger.info("material size: " + materialSize + "(m2)");
+        logger.info("color: " + color);
     }
 }
